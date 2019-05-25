@@ -1,4 +1,4 @@
 # image
 
 
-[](beg/beg.gif)
+![](https://github.com/belingud/image/blob/master/beg/beg.gif?raw=true)
