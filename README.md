@@ -1,2 +1,4 @@
 # image
-Easy peasy, japanesey.
+
+
+![](https://github.com/belingud/image/blob/master/beg/beg.gif?raw=true)
