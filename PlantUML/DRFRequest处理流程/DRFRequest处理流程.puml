@@ -1,0 +1,114 @@
+@startuml
+title:APIView
+:Request;
+split
+  : get;
+split again
+  : post;
+split again
+  : update;
+split again
+  : delete;
+end split
+: wsgi;
+:url路由;
+
+: 继承自APIView的类视图;
+: as_view;
+note right
+  继承自view
+end note
+:check_arguement;
+:dispatch;
+note left
+  调用APIView自己的
+end note
+:initialize_request;
+floating note right:重新封装request
+:initial;
+split
+  :检查后缀;
+  :预设;
+split again
+  :内容决策;
+split again
+  :版本决策;
+  :检查版本更新;
+split again
+  :执行认证;
+  :重写认证规则;
+split again
+  :检查权限;
+  :重写权限规则;
+split again
+  :节流;
+  :定义节流规则;
+end split
+:分发;
+split
+  split
+  #yellow :RetrieveAPIView;
+  split again
+  #yellow :ListAPIView;
+  end split
+
+  :get;
+
+  split
+    :retrieve;
+
+  split again
+  :list;
+
+  :paginate_queryset;
+  end split
+  :get object;
+  :get_queryset;
+
+  split
+  :filter_queryset;
+  :check_object_permission;
+
+  split again
+  :get_serializer;
+  :get_serializer_class;
+  :get_serializer_context;
+  end split
+split again
+  #yellow:CreateAPIView;
+  :post;
+
+  :create;
+  :get_serializer;
+  :perform_create;
+  :save;
+  :get_success_headers;
+split again
+  #yellow:UpdateAPIView;
+  :update;
+
+  split
+  :put;
+  split again
+  :patch;
+  end split
+
+  :udpate;
+  :get_object;
+  :get_serializer;
+  :is_valid;
+  :perform_update;
+  :save;
+split again
+  #yellow:DestroyAPIView;
+  :delete;
+  :destory;
+  :get_object;
+  :perform_destory;
+  :delete;
+end split
+
+:Response;
+: view中的业务逻辑;
+
+@enduml
